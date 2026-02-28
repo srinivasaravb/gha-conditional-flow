@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - develop
 jobs:
   lint:
     runs-on: ubuntu-latest

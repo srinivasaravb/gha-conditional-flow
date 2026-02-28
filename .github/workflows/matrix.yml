@@ -1,0 +1,25 @@
+name: Matrix workflow
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - release/**
+jobs:
+  matrix-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone The Code
+        uses: actions/checkout@v4
+      - name: steup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install depemdecies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Build Website
+        run: npm run build
+      - name: Deploy The Code
+        run: echo "Deploying The Code"
