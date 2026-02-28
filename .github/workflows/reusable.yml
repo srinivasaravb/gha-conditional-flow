@@ -1,0 +1,10 @@
+name: Reusable Workflow
+on: workflow_call:
+jobs:
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        run: |
+          echo "Deploying and Downloading..."
