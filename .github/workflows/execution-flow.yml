@@ -88,4 +88,4 @@ jobs:
       - name: Report Data
         run: |
           echo "Reporting Data"
-          echo ${ GITHUB.REPOSITORY }
+          echo "output results"
