@@ -81,8 +81,8 @@ jobs:
       - name: Deploy
         run: echo "Deploying..."
   report:
-    if: fauilure()
     runs-on: ubuntu-latest
+    if: failure()
     steps:
       - name: Report Data
         run: |
