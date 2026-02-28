@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - main
-      - release/**
 jobs:
   matrix-flow:
     continue-on-error: true
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest]
-        node-version: [12,14,16]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [12, 14, 16]
       include:
         - operating-system: macos-latest
           node-version: 18
