@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Continue On Error Website Deployment
 on:
   workflow_dispatch:
   push:
@@ -39,8 +39,8 @@ jobs:
         id: tests-ou
         run: npm run test
       - name: Upload test report
-        if: failure() && steps.tests-ou.outcome == 'failure'
-        #continue-on-error: true
+        #if: failure() && steps.tests-ou.outcome == 'failure'
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: test-report
