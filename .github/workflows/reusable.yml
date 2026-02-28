@@ -1,5 +1,12 @@
 name: Reusable Workflow
-on: workflow_call
+on: 
+  workflow_call:
+  inputs:
+    artifact-name:
+      description: This is the name of the artifact files to download and deploy. 
+      required: true
+      default: dist
+      type: string
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -7,3 +14,5 @@ jobs:
       - name: Get build artifacts
         run: |
           echo "Deploying and Downloading..."
+      - name: List The files
+        run: ls
