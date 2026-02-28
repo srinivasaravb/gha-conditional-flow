@@ -15,17 +15,17 @@ jobs:
   deploy:
     outputs:
       result: ${{ steps.set-output.outputs.result }}
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/download-artifact@v4
-          with:
-            name: ${{ inputs.artifact-name }}
-        - name: Get build artifacts
-          run: |
-            echo "Deploying and Downloading..."
-        - name: List The files
-          run: ls
-        - name: Set Result Output
-          id: set-output
-          run: echo "set-results=Deployment successful" >> $GITHUB_OUTPUT
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+      - name: Get build artifacts
+        run: |
+          echo "Deploying and Downloading..."
+      - name: List The files
+        run: ls
+      - name: Set Result Output
+        id: set-output
+        run: echo "set-results=Deployment successful" >> $GITHUB_OUTPUT
