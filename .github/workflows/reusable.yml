@@ -1,12 +1,12 @@
 name: Reusable Workflow
 on: 
   workflow_call:
-  inputs:
-    artifact-name:
-      description: This is the name of the artifact files to download and deploy. 
-      required: true
-      default: dist
-      type: string
+    inputs:
+      artifact-name:
+        description: This is the name of the artifact files to download and deploy. 
+        required: true
+        default: dist
+        type: string
 jobs:
   deploy:
     runs-on: ubuntu-latest
