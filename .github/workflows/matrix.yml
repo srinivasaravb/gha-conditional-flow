@@ -12,6 +12,12 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, windows-latest]
         node-version: [12,14,16]
+      include:
+        - operating-system: macos-latest
+          node-version: 18
+      execlude:
+        - operating-system: windows-latest
+          node-version: 12
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Clone The Code
