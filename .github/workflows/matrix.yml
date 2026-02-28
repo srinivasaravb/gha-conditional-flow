@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - develop
 jobs:
   matrix-flow:
     continue-on-error: true
