@@ -80,3 +80,11 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    if: fauilure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report Data
+        run: |
+          echo "Reporting Data"
+          echo ${ Github }
