@@ -21,6 +21,7 @@ jobs:
         run: npm ci
       - name: Lint code
         run: npm run lint
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -33,10 +34,10 @@ jobs:
           path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        if: steps.casche.cache-hit != 'true'
+        if: steps.cache.cache-hit != 'true'
         run: npm ci
       - name: Test code
-        id: tests-ou
+        id: test-run
         continue-on-error: true
         run: npm run test
       - name: Upload test report
@@ -45,9 +46,10 @@ jobs:
           name: test-report
           path: test.json
       - name: Output test results
-        run: echo "Output test results "
+        run: echo "Output test results"
       - name: Echo test results
         run: echo "Tests failed. Check the test report for details."
+
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -71,17 +73,20 @@ jobs:
         with:
           name: dist-files
           path: dist
+
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+
   print-deploy-results:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Print Deployment Results
         run: echo "Deployment results: ${{ needs.deploy.outputs.result }}"
+
   report:
     needs: [lint, deploy]
     runs-on: ubuntu-latest
