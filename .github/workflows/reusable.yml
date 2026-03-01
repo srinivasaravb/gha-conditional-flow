@@ -14,7 +14,7 @@ on:
 jobs:
   deploy:
     outputs:
-      result: ${{ steps.set-output.outputs.result }}
+      outcome: ${{ steps.set-output.outputs.set-results }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
